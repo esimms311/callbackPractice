@@ -21,12 +21,14 @@ and WHAT YOU SHOULD WRITE is the sayHi function that makes the code above work:
   // Code Here 
 
   
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+// var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
-first(names, function(firstName){
-  console.log('The first name in names is ' + firstName);
-  return firstName;
-});
+// first(names, function(firstName){
+//   console.log('The first name in names is ' + firstName);
+//   return firstName;
+// });
+
+var first = (arr, cb) => cb(arr[0])
 
 
 
@@ -35,10 +37,11 @@ first(names, function(firstName){
   //Code Here
 
 
-last(names, function(lastName){
-  console.log('The last name in names is ' + lastName);
-  return lastName;
-});
+// last(names, function(lastName){
+//   console.log('The last name in names is ' + lastName);
+//   return lastName;
+// });
+var last = (arr, cb) => cb(arr.pop())
 
 
 
@@ -47,9 +50,10 @@ last(names, function(lastName){
   //Code Here
 
 
-multiply(4, 3, function(answer){
-  console.log('The answer is ' + answer); //should console.log 12
-})
+// multiply(4, 3, function(answer){
+//   console.log('The answer is ' + answer); //should console.log 12
+// })
+var multiply = (num1, num2, cb) => cb(num1 * num2);
 
 
 
@@ -62,13 +66,20 @@ multiply(4, 3, function(answer){
 
 
 
-contains(names, 'Colt', function(result){
-  if(result === true){
-    console.log('Colt is in the array');
+// contains(names, 'Colt', function(result){
+//   if(result === true){
+//     console.log('Colt is in the array');
+//   } else {
+//     console.log('Colt is not in the array');
+//   }
+// });
+var contains = (arr, name, cb) => {
+  if(cb === true) {
+    cb(true)
   } else {
-    console.log('Colt is not in the array');
+    cb(false)
   }
-});
+}
 
 
 
@@ -77,6 +88,7 @@ contains(names, 'Colt', function(result){
 
   //Code Here
 
+  var uniq = (arr, cb) => 
 
 
 uniq(names, function(uniqArr){
