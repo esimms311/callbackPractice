@@ -73,13 +73,16 @@ var multiply = (num1, num2, cb) => cb(num1 * num2);
 //     console.log('Colt is not in the array');
 //   }
 // });
-var contains = (arr, name, cb) => {
-  if(cb === true) {
-    cb(true)
-  } else {
-    cb(false)
-  }
+let contains = (arr, name, cb) => {
+  cb (arr[0] === name);
 }
+  contains(names, 'Colt', function(result){
+    if(result === true) {
+      console.log('colt is in the array');
+    } else {
+      console.log('colt is not in the array');
+    }
+  })
 
 
 
@@ -88,7 +91,13 @@ var contains = (arr, name, cb) => {
 
   //Code Here
 
-  var uniq = (arr, cb) => 
+  var uniq = (arr, cb) => {
+    var uniqArr = arr.filter(function(item, pos){
+      return arr.indexOf(item) == pos;
+    })  
+    cb(uniqArr);
+  }
+ 
 
 
 uniq(names, function(uniqArr){
@@ -99,6 +108,11 @@ uniq(names, function(uniqArr){
 // 6. Write a function called each that takes in an array of names and a callback function. For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 
     //Code Here 
+    let each = (arr, cb) => {
+      for (var i = 0; i < arr.length; i++){
+        cb(arr[i], i)
+      }
+    }
 
 
 
@@ -112,7 +126,13 @@ each(names, function(item, indice){
 // When the correct user object is found, invoke the callback with the user object as an argument.
 
 // Code here
-
+let getUserById = (users, id, cb) => {
+  for (var i = 0; i < users.length; i++) {
+    if(users[i].id === id) {
+      cb(users[i])
+    }
+  }
+}
 
 
 var users = [
